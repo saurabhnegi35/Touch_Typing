@@ -30,26 +30,26 @@ Touch Typing is a typing game where users are presented with a displayed word an
 
 - Accuracy Calculation: The app also calculates and displays the accuracy of the user's typing. The errorCount state variable keeps track of the number of errors made, and the keyPressCount state variable counts the total number of key presses (including both correct and incorrect). The accuracy is calculated as (1 - errorCount / keyPressCount) \* 100 and is updated whenever there is a change in the errorCount or keyPressCount.
 
-## How to use this App
+## How to use this App: 
 
-    - Access the typing game:
-        Open a web browser on your device (e.g., Chrome, Firefox, Safari).
-        Enter the URL provided or navigate to the website where the typing game is hosted.
+- Access the typing game:
+    Open a web browser on your device (e.g., Chrome, Firefox, Safari).
+    Enter the URL provided or navigate to the website where the typing game is hosted.
 
-    - Start the game:
-        Once you are ready to start, you may be prompted to click a button or press a key to begin the game.
+- Start the game:
+    Once you are ready to start, you may be prompted to click a button or press a key to begin the game.
 
-    - Type the displayed word:
-        As the game starts, a word will be displayed on the screen. Your goal is to type the word accurately and quickly.
-        Use your keyboard to type the letters of the word in the correct order. Pay attention to capitalization if it's specified.
+- Type the displayed word:
+    As the game starts, a word will be displayed on the screen. Your goal is to type the word accurately and quickly.
+    Use your keyboard to type the letters of the word in the correct order. Pay attention to capitalization if it's specified.
 
-    - Feedback and scoring:
-        As you type, the input field may provide visual feedback, such as changing the background color to indicate correctness. A correct letter press will typically be indicated by a positive response (e.g., sound effect), while an incorrect press may trigger a negative response (e.g., sound effect, color change).
-        Your score and accuracy may be tracked during the game. Accuracy is usually calculated based on the number of errors you make in relation to the total number of key presses. Aim to type as accurately as possible to achieve a higher accuracy score.
+- Feedback and scoring:
+    As you type, the input field may provide visual feedback, such as changing the background color to indicate correctness. A correct letter press will typically be indicated by a positiveresponse (e.g., sound effect), while an incorrect press may trigger a negative response (e.g., sound effect, color change).
+    Your score and accuracy may be tracked during the game. Accuracy is usually calculated based on the number of errors you make in relation to the total number of key presses. Aim to typeas accurately as possible to achieve a higher accuracy score.
 
-    - Complete the word:
-        Continue typing the word until you have entered all the correct letters. Once the entire word is typed correctly, you may receive positive feedback (e.g., sound effect ) indicating a successful completion.
+- Complete the word:
+    Continue typing the word until you have entered all the correct letters. Once the entire word is typed correctly, you may receive positive feedback (e.g., sound effect ) indicating asuccessful completion.
 
-    - Enjoy and practice:
-        The typing game provides an engaging and interactive way to practice and enhance your typing skills.
-        Make the most of the game by challenging yourself, aiming for accuracy and speed, and enjoying the process of improving your typing abilities.
+- Enjoy and practice:
+    The typing game provides an engaging and interactive way to practice and enhance your typing skills.
+    Make the most of the game by challenging yourself, aiming for accuracy and speed, and enjoying the process of improving your typing abilities.
