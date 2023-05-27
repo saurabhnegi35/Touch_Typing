@@ -1,16 +1,24 @@
 import React from "react";
 import "./Input.css";
+import { connect } from "react-redux";
+import { setKeyPressed } from "../reducers/Action";
 import { useState } from "react";
 import { useEffect } from "react";
 import Click from "../media/click.wav";
 import Error from "../media/error.wav";
 
-const Input = (props) => {
-  console.log(props.displayWord);
+const Input = ({ displayWord, setKeyPressed, isKeyPressed }) => {
+  // console.log(displayWord);
   const [word, setWord] = useState("");
   const [isTrue, setIsTrue] = useState("");
-  console.log(isTrue);
+  // console.log(isTrue);
   let inputBackgroundColor;
+
+  const handleKeyDown = () => {
+    if (!isKeyPressed) {
+      setKeyPressed(true);
+    }
+  };
 
   function click() {
     new Audio(Click).play();
@@ -35,14 +43,14 @@ const Input = (props) => {
   // console.log(props.displayWord.slice(0, word.length) === word);
 
   useEffect(() => {
-    if (props.displayWord.slice(0, word.length) === word) {
+    if (displayWord.slice(0, word.length) === word) {
       setIsTrue("true");
       click();
     } else {
       setIsTrue("false");
       error();
     }
-  }, [word, props.displayWord]);
+  }, [word, displayWord]);
 
   if (isTrue !== "true") {
     inputBackgroundColor = "#FF6969";
@@ -91,6 +99,7 @@ const Input = (props) => {
         className="input-bar"
         placeholder="Type the Upper Text Here"
         style={styles}
+        onKeyDown={handleKeyDown}
         onChange={(e) => {
           setWord(e.target.value);
           // console.log(searchText);
@@ -100,4 +109,14 @@ const Input = (props) => {
   );
 };
 
-export default Input;
+const mapStateToProps = (state) => {
+  return {
+    isKeyPressed: state.isKeyPressed,
+  };
+};
+
+const mapDispatchToProps = {
+  setKeyPressed,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Input);
