@@ -1,5 +1,7 @@
 const initialState = {
   isKeyPressed: false,
+  isTimerPaused: false,
+  isMatched: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -8,6 +10,17 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         isKeyPressed: action.payload,
+      };
+    case "SET_TIMER_PAUSED": 
+      return {
+        ...state,
+        isTimerPaused: action.payload,
+      };
+
+    case "SET_MATCHED": 
+      return {
+        ...state,
+        isMatched: action.payload,
       };
     default:
       return state;

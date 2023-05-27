@@ -1,28 +1,45 @@
 import React from "react";
 import "./Input.css";
 import { connect } from "react-redux";
-import { setKeyPressed } from "../reducers/Action";
+import { setKeyPressed, setTimerPaused, setMatched } from "../reducers/Action";
 import { useState, useEffect } from "react";
 import Click from "../media/click.wav";
 import Error from "../media/error.wav";
 import Yay from "../media/yay.wav";
 
-const Input = ({ displayWord, setKeyPressed, isKeyPressed }) => {
+const Input = ({
+  displayWord,
+  setKeyPressed,
+  isKeyPressed,
+  setTimerPaused,
+  setMatched,
+}) => {
   // console.log(displayWord);
   const [word, setWord] = useState("");
   const [isTrue, setIsTrue] = useState("");
   const [isCompleted, setIsCompleted] = useState(false);
-  // console.log(isTrue);
+  const [play, setPlay] = useState("false");
+  // const [isTimerPaused, setIsTimerPaused] = useState(false);
+
+  // console.log(play);
+  useEffect(() => {
+    setPlay("true");
+  }, [displayWord]);
+
+  // console.log(isTimerPaused);
   let inputBackgroundColor;
 
   const handleKeyDown = () => {
     if (!isKeyPressed) {
       setKeyPressed(true);
+      setTimerPaused(false);
     }
   };
 
   function click() {
-    new Audio(Click).play();
+    if (play === "true") {
+      new Audio(Click).play();
+    }
   }
 
   function error() {
@@ -30,7 +47,9 @@ const Input = ({ displayWord, setKeyPressed, isKeyPressed }) => {
   }
 
   function yay() {
-    new Audio(Yay).play();
+    if (play === "true") {
+      new Audio(Yay).play();
+    }
   }
 
   // console.log("Word Length", word.length);
@@ -60,14 +79,22 @@ const Input = ({ displayWord, setKeyPressed, isKeyPressed }) => {
   useEffect(() => {
     if (displayWord.length === word.length && displayWord === word) {
       setIsTrue("true");
+      setMatched(true);
       setIsCompleted(true);
+      setTimerPaused(true);
+      setTimeout(() => {
+        setWord("");
+        setIsCompleted(false);
+        setKeyPressed(false);
+      }, 1000);
       yay();
     }
-  }, [word, displayWord]);
+  }, [word, displayWord, setTimerPaused, setMatched]);
 
   if (isTrue !== "true") {
     inputBackgroundColor = "#FF6969";
   }
+  console.log("is tfalse", isKeyPressed);
   let styles = {
     backgroundColor: inputBackgroundColor,
   };
@@ -118,6 +145,7 @@ const Input = ({ displayWord, setKeyPressed, isKeyPressed }) => {
           // console.log(searchText);
         }}
         disabled={isCompleted}
+        value={word}
       />
     </>
   );
@@ -131,6 +159,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   setKeyPressed,
+  setTimerPaused,
+  setMatched,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Input);

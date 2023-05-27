@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MainSection.css";
 import Input from "./Input";
+import { setMatched } from "../reducers/Action";
 import { Ingram } from "./constants";
+import { connect } from "react-redux";
 
-const MainSection = () => {
+const MainSection = ({ isMatched, setMatched, isPaused }) => {
+  const [displayWord, setDisplayWord] = useState("as ak as ak as ak");
   const randomWords = [];
+
+  useEffect(() => {
+    console.log("IS MATCHED", isMatched);
+  }, [isMatched]);
 
   function getRandomWords(array, count) {
     while (randomWords.length < count) {
@@ -29,8 +36,16 @@ const MainSection = () => {
     return sixWordString;
   }
 
-  const selectedWords = getRandomWords(Ingram, 2);
-  const displayWord = generateSixWordString(selectedWords);
+  // const selectedWords = getRandomWords(Ingram, 2);
+  //  setDisplayWord = "ak as ak as ak as";
+
+  if (isMatched) {
+    setTimeout(() => {
+      const selectedWords = getRandomWords(Ingram, 2);
+      setDisplayWord(generateSixWordString(selectedWords));
+      setMatched(false);
+    }, 1000);
+  }
 
   // const displayWord = "ac ba ac ba ac ba";
   return (
@@ -38,9 +53,19 @@ const MainSection = () => {
       <div className="expected-phrase">
         <p>{displayWord}</p>
       </div>
-      <Input displayWord={displayWord} />
+      <Input displayWord={displayWord} setMatched={setMatched} />
     </div>
   );
 };
 
-export default MainSection;
+const mapStateToProps = (state) => {
+  return {
+    isMatched: state.isMatched,
+  };
+};
+
+const mapDispatchToProps = {
+  setMatched,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainSection);

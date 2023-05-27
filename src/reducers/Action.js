@@ -5,4 +5,16 @@ export const setKeyPressed = (isKeyPressed) => {
   };
 };
 
+export const setTimerPaused = (isPaused) => {
+  return {
+    type: "SET_TIMER_PAUSED",
+    payload: isPaused,
+  };
+};
 
+export const setMatched = (isMatched) => {
+  return {
+    type: "SET_MATCHED",
+    payload: isMatched,
+  };
+};

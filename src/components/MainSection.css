@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+JP:wght@900&display=swap");
 
 .main-section {
+  margin-top: 10vh;
   width: 100vw;
-  height: 70vh;
+  height: 60vh;
   /* background-color: white; */
 }
 
