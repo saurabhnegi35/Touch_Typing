@@ -9,3 +9,9 @@
   opacity: 0.7;
 }
 
+.accuracy {
+  margin-top: 10vh;
+  display: flex;
+  gap: 2vw;
+  justify-content: center;
+}
