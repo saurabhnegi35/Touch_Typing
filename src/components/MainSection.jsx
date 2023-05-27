@@ -50,9 +50,7 @@ const MainSection = ({ isMatched, setMatched, isPaused }) => {
   // const displayWord = "ac ba ac ba ac ba";
   return (
     <div className="main-section">
-      <div className="expected-phrase">
-        <p>{displayWord}</p>
-      </div>
+      <div className="expected-phrase">{displayWord}</div>
       <Input displayWord={displayWord} setMatched={setMatched} />
     </div>
   );

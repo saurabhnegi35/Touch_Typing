@@ -8,12 +8,27 @@
 }
 
 .expected-phrase {
-  width: 960px;
-  height: 60px;
+  width: 50vw;
+  height: 8vh;
   font-family: "Lato";
   margin: 0 auto 3rem;
   text-align: center;
   background-color: #088395;
   border-radius: 5px;
   font-size: 2.5rem;
+}
+
+@media (max-width: 550px) {
+  .expected-phrase {
+    width: 90vw;
+    height: 8vh;
+  }
+}
+
+@media (max-width: 300px) {
+  .expected-phrase {
+    width: 90vw;
+    height: 5vh;
+    font-size: 1.5rem;
+  }
 }
