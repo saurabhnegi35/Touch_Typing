@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setKeyPressed } from "../reducers/Action";
 
 const Timer = ({ isKeyPressed, setKeyPressed }) => {
-  const [seconds, setSeconds] = React.useState(300); // 5 minutes
+  const [seconds, setSeconds] = useState(300); // 5 minutes
 
   useEffect(() => {
     let interval = null;
@@ -18,6 +18,12 @@ const Timer = ({ isKeyPressed, setKeyPressed }) => {
       clearInterval(interval);
     };
   }, [isKeyPressed]);
+
+  useEffect(() => {
+    if (seconds === 0) {
+      // Timer finished, handle completion logic here
+    }
+  }, [seconds]);
 
   const formatTime = (totalSeconds) => {
     const minutes = Math.floor(totalSeconds / 60);

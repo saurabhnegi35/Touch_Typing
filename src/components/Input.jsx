@@ -2,15 +2,16 @@ import React from "react";
 import "./Input.css";
 import { connect } from "react-redux";
 import { setKeyPressed } from "../reducers/Action";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Click from "../media/click.wav";
 import Error from "../media/error.wav";
+import Yay from "../media/yay.wav";
 
 const Input = ({ displayWord, setKeyPressed, isKeyPressed }) => {
   // console.log(displayWord);
   const [word, setWord] = useState("");
   const [isTrue, setIsTrue] = useState("");
+  const [isCompleted, setIsCompleted] = useState(false);
   // console.log(isTrue);
   let inputBackgroundColor;
 
@@ -26,6 +27,10 @@ const Input = ({ displayWord, setKeyPressed, isKeyPressed }) => {
 
   function error() {
     new Audio(Error).play();
+  }
+
+  function yay() {
+    new Audio(Yay).play();
   }
 
   // console.log("Word Length", word.length);
@@ -49,6 +54,14 @@ const Input = ({ displayWord, setKeyPressed, isKeyPressed }) => {
     } else {
       setIsTrue("false");
       error();
+    }
+  }, [word, displayWord]);
+
+  useEffect(() => {
+    if (displayWord.length === word.length && displayWord === word) {
+      setIsTrue("true");
+      setIsCompleted(true);
+      yay();
     }
   }, [word, displayWord]);
 
@@ -104,6 +117,7 @@ const Input = ({ displayWord, setKeyPressed, isKeyPressed }) => {
           setWord(e.target.value);
           // console.log(searchText);
         }}
+        disabled={isCompleted}
       />
     </>
   );
