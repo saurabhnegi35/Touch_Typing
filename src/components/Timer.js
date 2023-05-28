@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setKeyPressed, setTimerPaused } from "../reducers/Action";
 
-const Timer = ({ isKeyPressed, setKeyPressed, isTimerPaused, setTimerPaused }) => {
+const Timer = ({
+  isKeyPressed,
+  setKeyPressed,
+  isTimerPaused,
+  setTimerPaused,
+}) => {
   const [seconds, setSeconds] = useState(300); // 5 minutes
-//   const [isPaused, setIsPaused] = useState(false);
-
-//   console.log(isTimerPaused);
 
   useEffect(() => {
     let interval = null;

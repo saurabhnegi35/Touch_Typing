@@ -36,7 +36,7 @@ const Input = ({
       setTotalWordCount((prevCount) => prevCount + 1);
     }
   };
-  console.log("setTotalWordCount", totalWordCount);
+
   function click() {
     if (play === "true") {
       new Audio(Click).play();
@@ -82,13 +82,11 @@ const Input = ({
   if (isTrue !== "true") {
     inputBackgroundColor = "#FF6969";
   }
-  console.log("is tfalse", isKeyPressed);
+
   let styles = {
     backgroundColor: inputBackgroundColor,
   };
 
-  // let accuracy = (1 - errorCount / totalWordCount) * 100;
-  // console.log("ERROR COUNT", errorCount);
   useEffect(() => {
     const newAccuracy =
       totalWordCount > 0 ? (1 - errorCount / totalWordCount) * 100 : 100;
@@ -105,7 +103,6 @@ const Input = ({
         onKeyDown={handleKeyDown}
         onChange={(e) => {
           setWord(e.target.value);
-          // console.log(searchText);
         }}
         disabled={isCompleted}
         value={word}
