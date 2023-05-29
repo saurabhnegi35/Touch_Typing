@@ -9,6 +9,9 @@ const MainSection = ({ isMatched, setMatched, isPaused }) => {
   const [displayWord, setDisplayWord] = useState("as ak as ak as ak");
   const randomWords = [];
 
+console.log("display Word", displayWord)
+console.log("display setWord", setDisplayWord)
+
   function getRandomWords(array, count) {
     while (randomWords.length < count) {
       const randomIndex = Math.floor(Math.random() * array.length);

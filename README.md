@@ -21,6 +21,8 @@ You may also see any lint errors in the console.
 
 Touch Typing is a typing game where users are presented with a displayed word and their task is to type it correctly. The app provides real-time feedback on the accuracy of the user's input and plays audio cues for correct and incorrect keystrokes.
 
+Here are using the React Redux for the State Management
+
 ## Here's how the app works:
 
 - User Interface: The app has a simple user interface that consists of an input field where users can type the displayed word. The input field is disabled once the user successfully completes typing the word.
@@ -56,3 +58,11 @@ Touch Typing is a typing game where users are presented with a displayed word an
 - Enjoy and practice:
     The typing game provides an engaging and interactive way to practice and enhance your typing skills.
     Make the most of the game by challenging yourself, aiming for accuracy and speed, and enjoying the process of improving your typing abilities.
+
+## Technologies and Libraries Used
+
+- Javascript
+- React
+- JSX
+- CSS
+- React Redux
